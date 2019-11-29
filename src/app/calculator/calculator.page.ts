@@ -29,14 +29,18 @@ export class CalculatorPage implements OnInit {
      * @param equation   An equation represented in string format.
      */
     evaluateEquation(equation) {
-        console.log('Entry Equation', equation);
         this.forceReset = true;
+        // TODO: Add sin, cos, tan
+        // 'sin': x => Math.sin(Math.toRadians(x))
         const operatorMap = {
             '+': (a, b) => parseFloat(a) + parseFloat(b),
             '-': (a, b) => parseFloat(a) - parseFloat(b),
             'x': (a, b) => parseFloat(a) * parseFloat(b),
-            '÷': (a, b) => parseFloat(a) / parseFloat(b)
+            '÷': (a, b) => parseFloat(a) / parseFloat(b),
+            '^': (a, b) => Math.pow(parseFloat(a), parseFloat(b)),
+            '√': (a, b) => Math.sqrt(parseFloat(a), parseFloat(b))
         };
+        const operatorList = Object.keys(operatorMap);
 
         let answer = 0;
         let next = '';
@@ -48,14 +52,22 @@ export class CalculatorPage implements OnInit {
             equation = _.replace(equation, matches[0], subAnswer.toString());
         }
 
+        // TODO: Replace operators that are adjacent for arithmatic to work.
+
         for (const character of equation) {
             if (_.has(operatorMap, character)) {
+                if (isNaN(operatorMap[currentOperator](answer, next))) {
+                    next = '0';
+                }
                 answer = operatorMap[currentOperator](answer, next);
                 currentOperator = character;
                 next = '';
             } else {
                 next += character;
             }
+        }
+        if (isNaN(operatorMap[currentOperator](answer, next))) {
+            answer = '0';
         }
         return operatorMap[currentOperator](answer, next);
     }
