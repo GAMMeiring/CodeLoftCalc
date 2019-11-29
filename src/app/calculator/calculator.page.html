@@ -1,91 +1,93 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Calculator</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Calculator</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label position="stacked">Calculation</ion-label>
-    <ion-textarea
-            [ngModel]="stringEquation"
-            disabled
-            readonly>
-    </ion-textarea>
-  </ion-item>
-  <ion-item color="dark">
-    <ion-input disabled type="number" [ngModel]="answer"></ion-input>
-  </ion-item>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-button color="medium">(</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="medium">)</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="medium">%</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="medium">AC</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button color="light">7</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="light">8</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="light">9</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="medium">÷</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button color="light">4</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="light">5</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="light">6</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="medium">x</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button color="light">1</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="light">2</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="light">3</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="medium">-</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button color="light">0</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="light">.</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="primary">=</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="medium">+</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-item>
+        <ion-label position="stacked">Calculation</ion-label>
+        <ion-textarea
+                [ngModel]="stringEquation"
+                disabled
+                readonly>
+        </ion-textarea>
+    </ion-item>
+    <ion-item color="dark">
+        <ion-input disabled type="number" [ngModel]="answer"></ion-input>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button color="medium" [disabled]="forceReset" (click)="addCharacterToEquation('(')">(</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="medium" [disabled]="forceReset" (click)="addCharacterToEquation(')')">)</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="medium" [disabled]="forceReset" (click)="addCharacterToEquation('%')">%</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button [color]="forceReset ? 'primary' : 'medium'" (click)="clearEquation()">AC</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('7')">7</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('8')">8</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('9')">9</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="medium" [disabled]="forceReset" (click)="addCharacterToEquation('÷')">÷</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('4')">4</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('5')">5</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('6')">6</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="medium" [disabled]="forceReset" (click)="addCharacterToEquation('x')">x</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('1')">1</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('2')">2</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('3')">3</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="medium" [disabled]="forceReset" (click)="addCharacterToEquation('-')">-</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('0')">0</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" [disabled]="forceReset" (click)="addCharacterToEquation('.')">.</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button [color]="forceReset ? 'medium' : 'primary'" [disabled]="forceReset"
+                            (click)="addCharacterToEquation('=')">=
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="medium" [disabled]="forceReset" (click)="addCharacterToEquation('+')">+</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
