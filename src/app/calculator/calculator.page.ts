@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculator.page.scss'],
 })
 export class CalculatorPage implements OnInit {
+  public stringEquation = '';
+  public answer;
 
   constructor() { }
 

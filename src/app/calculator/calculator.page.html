@@ -5,5 +5,87 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label position="stacked">Calculation</ion-label>
+    <ion-textarea
+            [ngModel]="stringEquation"
+            disabled
+            readonly>
+    </ion-textarea>
+  </ion-item>
+  <ion-item color="dark">
+    <ion-input disabled type="number" [ngModel]="answer"></ion-input>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="medium">(</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium">)</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium">%</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium">AC</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="light">7</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light">8</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light">9</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium">÷</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="light">4</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light">5</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light">6</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium">x</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="light">1</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light">2</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light">3</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium">-</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="light">0</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light">.</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary">=</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="medium">+</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
