@@ -5,13 +5,14 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ionic serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
+  "engines" : { "node" : ">=10.9" },
   "dependencies": {
     "@angular/common": "~8.1.2",
     "@angular/core": "~8.1.2",
