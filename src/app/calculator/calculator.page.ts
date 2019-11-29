@@ -20,7 +20,7 @@ export class CalculatorPage implements OnInit {
     // TODO: Format equation
     addCharacterToEquation(char) {
         if (char === '=') {
-            this.evaluateEquation(this.stringEquation);
+            this.answer = this.evaluateEquation(this.stringEquation);
         }
         this.stringEquation = this.stringEquation + char;
     }
@@ -29,6 +29,7 @@ export class CalculatorPage implements OnInit {
      * @param equation   An equation represented in string format.
      */
     evaluateEquation(equation) {
+        console.log('Entry Equation', equation);
         this.forceReset = true;
         const operatorMap = {
             '+': (a, b) => parseFloat(a) + parseFloat(b),
@@ -41,6 +42,12 @@ export class CalculatorPage implements OnInit {
         let next = '';
         let currentOperator = '+';
 
+        const matches = equation.match(/\((.*)\)/);
+        if (matches) {
+            const subAnswer = this.evaluateEquation(matches[1]);
+            equation = _.replace(equation, matches[0], subAnswer.toString());
+        }
+
         for (const character of equation) {
             if (_.has(operatorMap, character)) {
                 answer = operatorMap[currentOperator](answer, next);
@@ -50,7 +57,7 @@ export class CalculatorPage implements OnInit {
                 next += character;
             }
         }
-        this.answer = operatorMap[currentOperator](answer, next);
+        return operatorMap[currentOperator](answer, next);
     }
 
     clearEquation() {
